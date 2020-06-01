@@ -8,8 +8,9 @@ router.route('/').post((req,res)=>{
     const user={user_id,pswd}
     Users.find(user)
     .then(user=>{
-        if(user.length===1)
-            res.redirect('/profile');
+        if(user.length===1){
+            res.redirect(`/profile?id=${user[0]._id}`);
+        }
         else{
             res.redirect('/');
         }
@@ -18,5 +19,17 @@ router.route('/').post((req,res)=>{
     })
 });
 
+router.route('/update/:id').post((req,res)=>{
+    const id = req.params.id;
+    console.log(id);
+    const change={
+        pswd : req.body.pswd,
+        dob : req.body.dob
+    }
+    Users.findByIdAndUpdate(id,change)
+    .then((user)=>{
+        res.redirect('/');
+    })
+})
 
 module.exports = router;

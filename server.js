@@ -27,7 +27,8 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/profile',(req,res)=>{
-  res.render('profile');
+  console.log(req.query.id);
+  res.render('profile',{id:req.query.id});
 })
 
 app.use('/users',userRouter);
