@@ -27,7 +27,6 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/profile',(req,res)=>{
-  console.log(req.query.id);
   res.render('profile',{id:req.query.id});
 })
 

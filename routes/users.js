@@ -21,7 +21,6 @@ router.route('/').post((req,res)=>{
 
 router.route('/update/:id').post((req,res)=>{
     const id = req.params.id;
-    console.log(id);
     const change={
         pswd : req.body.pswd,
         dob : req.body.dob
