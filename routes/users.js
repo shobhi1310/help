@@ -1,13 +1,14 @@
 const router = require('express').Router();
 let Users = require('../models/users.model');
 
-router.route('/').post((req,res)=>{
+router.route('/').get((req,res)=>{
     // console.log(req.body);
     const user_id = req.body.user_id;
     const pswd = req.body.pswd;
-    const user={user_id,pswd}
-    Users.find(user)
+    const user={name:"Shubhankar Bhadra"}
+    Users.findById("5ed36527f03ccf5f0c44ecc5")
     .then(user=>{
+        console.log(user)
         if(user.length===1){
             res.redirect(`/profile?id=${user[0]._id}`);
         }
